@@ -1,2 +1,23 @@
-<h1>Main#test</h1>
-<p>Find me in app/views/main/test.html.erb</p>
+<%= form_with url: "/main/test", method: :post, data: {turbo: false} do |form| %>
+    <table>
+        <tr>
+            <th>
+                ชื่อวิชา
+            </th>
+            <th>
+                คะแนน
+            </th>
+        </tr>
+        <% (1..3).each do |idx| %>
+            </tr>
+                <td>
+                    <%= form.text_field "course_name_#{idx}" %>
+                </td>
+                <td>
+                    <%= form.number_field "course_score_#{idx}" %>
+                </td>
+            <tr>
+        <% end %>
+    </table>
+    <%= form.submit "Submit" %>
+<% end %>
